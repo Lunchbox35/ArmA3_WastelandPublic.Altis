@@ -34,7 +34,7 @@ player addWeapon "hgun_Pistol_heavy_01_F";
 player addhandGunItem "optic_MRD";
 player addhandGunItem "muzzle_snds_acp";
 
-player addMagazines ["100Rnd_65x39_caseless_mag",2];
+player addMagazines ["30Rnd_65x39_caseless_mag",10];
 player addWeapon "arifle_MX_F";
 player addPrimaryWeaponItem "optic_tws";
 player addPrimaryWeaponItem "acc_flashlight";

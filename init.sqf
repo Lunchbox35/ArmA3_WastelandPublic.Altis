@@ -69,4 +69,5 @@ if (isServer) then
 //Spackler, Init 3rd party Scripts which is not in vanilla.
 [] execVM "addons\spackler\gear\default_gear.sqf";												//add extra gear if UID in certain files
 [] execVM "addons\EtV\init.sqf";															//add functions to attach explosives to vehicle
+[] execVM "addons\zlt_fastrope\zlt_fastrope.sqf";											// fast roping
 //END
