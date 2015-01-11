@@ -11,8 +11,8 @@ _role1 = "Welcome to Turtle Club's Kill'em All Altis A3Wasteland";
 _role1names = ["This server is under continuous configuration. We are doing our best to keep maintenance restarts to a minimum.","Please understand that database resets and errors can occur."];
 _role2 = "Server Owners";
 _role2names = ["Spackler, FohoGaming, Snipermunyshotz, xCRO3x"];
-_role3 = "Feedback";
-_role3names = ["Please report any bugs/feedback/suggestions to admins."];
+_role3 = "Admin Gear";
+_role3names = ["Admins wear black guerilla gear. They will be roaming the server helping players as needed."];
 _role4 = "Object saving";
 _role4names = ["Objects are saved for 5 days maximum. This includes baseparts and crates. If you resave them 5 new days start."];
 _role5 = "Vehicle saving";
@@ -24,7 +24,7 @@ _role7names = ["Vehicles that are bought and owned can only be locked by the own
 _role8 = "Earplugs";
 _role8names = ["The Earplugs script is bound to the End key. Press the End key to put them in and take them out."];
 _role9 = "ATM / Bank";
-_role9names = ["As at TEST, ATM's no longer show on the map. You can now use ANY atm found in Altis. Have fun :). We might revert back to just 7 ATM's."];
+_role9names = ["ATM's no longer show on the map. You can now use ANY atm found in Altis. Have fun :)."];
 
 {
 sleep 2;

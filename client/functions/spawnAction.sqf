@@ -35,8 +35,8 @@ spawnActionHandle = (_this select 1) spawn
 		[] execVM "addons\spackler\gear\gearCheck.sqf"; //Spackler, Add extra gear.
 		//END
 
-		[MF_ITEMS_CANNED_FOOD, 1] call mf_inventory_add;
-		[MF_ITEMS_WATER, 1] call mf_inventory_add;
+		[MF_ITEMS_CANNED_FOOD, 2] call mf_inventory_add;
+		[MF_ITEMS_WATER, 2] call mf_inventory_add;
 		[MF_ITEMS_REPAIR_KIT, 1] call mf_inventory_add;
 	};
 

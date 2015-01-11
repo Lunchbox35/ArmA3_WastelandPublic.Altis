@@ -69,14 +69,14 @@ switch (true) do
    {
 		player execVM "addons\spackler\gear\gearLevel9.sqf"; 
 		sleep 5;
-		hint "Sean's kill'em all gear has been loaded";
+		hint "Admin's Default gear has been loaded";
    };
 
       case  (_uid in call gearLevel10) :
    {
 		player execVM "addons\spackler\gear\gearLevel10.sqf"; 
 		sleep 5;
-		hint "Default Admin gear has been loaded";
+		hint "Level 10 gear has been loaded";
    };
    
     default
