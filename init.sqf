@@ -36,7 +36,7 @@ if (!isDedicated) then
 {
 	[] spawn
 	{
-		9999 cutText ["Welcome to A3Wasteland, please wait for your client to initialize", "BLACK", 0.01];
+		9999 cutText ["Welcome to TC A3Wasteland Altis, please wait for your client to initialize", "BLACK", 0.01];
 
 		waitUntil {!isNull player};
 		removeAllWeapons player;
@@ -70,4 +70,5 @@ if (isServer) then
 [] execVM "addons\spackler\gear\default_gear.sqf";												//add extra gear if UID in certain files
 [] execVM "addons\EtV\init.sqf";															//add functions to attach explosives to vehicle
 [] execVM "addons\zlt_fastrope\zlt_fastrope.sqf";											// fast roping
+[] execVM "addons\outlw_magRepack\MagRepack_init_sv.sqf";									//add repacking of magazines
 //END

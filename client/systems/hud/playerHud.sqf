@@ -110,7 +110,7 @@ while {true} do
 	_hudServerTextbox = _ui displayCtrl hud_server_idc;
 	
 	_serverString = format ["<t color='#A0FFFFFF'>Server: TC A3Wasteland Altis</t>",_serverString];
-	//_serverString = format ["%1<br/><t color='#A0FFFFFF'>Teamspeak: ts.toparma.com<br/>Website: TOPARMA.COM</t>",_serverString];
+	_serverString = format ["%1<br/><t color='#A0FFFFFF'>TS3: ts117.teamspeak3.com:7453</t>",_serverString];
 	_hudServerTextbox ctrlSetStructuredText parseText _serverString;
 	_hudServerTextbox ctrlCommit 0;
 	

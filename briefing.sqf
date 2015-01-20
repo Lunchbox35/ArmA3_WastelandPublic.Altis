@@ -13,26 +13,11 @@ player createDiarySubject ["credits", "Credits"];
 
 player createDiaryRecord ["changelog",
 [
-"NL United",
+"TC",
 "
-<br/> Testing changes
-<br/> [Added] Earplugs under the End key
-<br/> [Added] Chop Shop and Change Ownership scripts
-<br/> [Added] Vehicle locking
-<br/> [Added] Locked vehicle break in at a cost
-<br/> [Added] Heal self script
-<br/> [Added] Access to DLC Helicopter pilot seat without DLC
-<br/> [Added] Patrol mission: Airport patrol
-<br/> [Added] Extra missions: Hostile Jet, Smugglers, Snipers & Hack laptop 
-<br/> [Added] Side mission: Town Takeover
-<br/> [Added] ATM's and showing bankmoney on HUD
-<br/> [Added] Blufor base for Blufor only
-<br/> [Added] Admin base in saltflats
-<br/> [Added] Intro script
-<br/> [Changed] Increased AI skill and accuracy 
-<br/> [Changed] Vehicle saving to 2*24 hours
-<br/> [Changed] Object saving to 5*24 hours
-<br/> [Changed] Spawnbeacon insertion to 0 mtrs.
+<br/>[Added] Patrol units around all capture points with Support Troop Drops after capture
+<br/> [Added] Outlaw Mag Repack
+<br/> [Changed] Uniform and Weapon load-out for AI patrols at capture points
 <br/> [Server] Lobby idle kick after 15 minutes
 <br/> [Server] Max ping is 250
 "
@@ -245,6 +230,11 @@ player createDiaryRecord ["credits",
 [
 "Credits",
 "
+<br/><font size='16' color='#BBBBBB'>Special Thanks:</font>
+<br/>   * AgentRev
+<br/>	* SpeedWeasel
+<br/>	* BadBolt
+<br/>
 <br/><font size='16' color='#BBBBBB'>Developed by A3Wasteland.com:</font>
 <br/>	* AgentRev (TeamPlayerGaming)
 <br/>	* JoSchaap (GoT/Tweakers.net)

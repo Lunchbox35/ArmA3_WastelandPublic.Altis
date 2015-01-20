@@ -41,14 +41,14 @@ switch (true) do
    {
 		player execVM "addons\spackler\gear\gearLevel5.sqf"; 
 		sleep 5;
-		hint "Your Level 5 gear loaded";
+		hint "Admin SMG gear loaded";
    };
    
     case  (_uid in call gearLevel6) :
    {
 		player execVM "addons\spackler\gear\gearLevel6.sqf"; 
 		sleep 5;
-		hint "Your Level 6 gear loaded";
+		hint "Admin Assassin gear loaded";
    };
    
     case  (_uid in call gearLevel7) :

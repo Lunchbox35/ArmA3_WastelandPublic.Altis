@@ -4,23 +4,24 @@
 
 if (((getPlayerUID player) in call gearLevel8)) then {
 
-player setVariable ["cmoney", (player getVariable "cmoney") + 50000, true];
+player setVariable ["cmoney", (player getVariable "cmoney") + 100000, true];
 
 removeAllWeapons player;
 //removeUniform player;
 //removeallitems player;
-//removeVest player;
+removeVest player;
 removeBackpack player;
-//removeGoggles player;
+removeGoggles player;
 removeHeadgear player;
 clearMagazineCargo player;
 
-player addBackpack "B_Carryall_mcamo";
-//player addUniform "U_B_CombatUniform_mcam";
-player addVest "V_TacVest_brn";	
+player addBackpack "B_Carryall_oucamo";
+player addUniform "U_BG_Guerilla2_1";
+player addVest "V_PlateCarrierIAGL_dgtl";	
 player linkItem "NVGoggles";
 player linkItem "ItemGPS";
-player addweapon "Rangefinder";
+player addweapon "Laserdesignator";
+player addMagazines ["Laserbatteries", 1]; 
 player addMagazines ["DemoCharge_Remote_Mag", 2];
 player addMagazines ["SmokeShellGreen", 2];
 player addMagazines ["SmokeShell", 2];
@@ -29,7 +30,7 @@ player addItem "FirstAidKit";
 player addItem "";
 player addItem "optic_tws";
 player addGoggles "";
-player addHeadgear "H_HelmetSpecB_paint2";
+player addHeadgear "H_HelmetB_plain_blk";
 
 player addMagazines ["11Rnd_45ACP_Mag", 3];
 player addWeapon "hgun_Pistol_heavy_01_F";

@@ -60,7 +60,7 @@ else
 	// gearLevel5
 	gearLevel5 = compileFinal str
 	[
-		// Put player UIDs here
+"76561198157267445" // FohoGaming
 	];
 	
 	// gearLevel6
@@ -72,8 +72,8 @@ else
 	// gearLevel7
 	gearLevel7 = compileFinal str
 	[
-"76561198156367625", // Snipermunyshotz
-"76561198158790751" // xCRO3x
+"76561198158790751", // xCRO3x
+"76561198156367625" // Snipermunyshotz
 
 	];
 	
@@ -86,7 +86,6 @@ else
 	// gearLevel9
 	gearLevel9 = compileFinal str
 	[
-"76561198157267445", // FohoGaming
 "76561198086245178", // Spackler
 "76561198168475868" //RUDonkeyKong
 	];

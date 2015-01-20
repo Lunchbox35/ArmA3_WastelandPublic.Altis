@@ -21,7 +21,7 @@ class Header
 	minPlayers=1;
 	maxPlayers=145; // 144 players, 1 headless client
 };
-author="Spackler - TC A3Wasteland - A3Wasteland.com"; // it would be if you could keep "A3Wasteland.com" in the name, like "YourName and A3Wasteland.com" :)
+author="Spackler - A3Wasteland.com"; // it would be if you could keep "A3Wasteland.com" in the name, like "YourName and A3Wasteland.com" :)
 onLoadName = "TC A3Wasteland Altis"; // it would be great if you could keep "A3" in the name, like "ABC A3Wasteland" instead of "ABC Wasteland" :)
 onLoadMission = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewText = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
@@ -53,6 +53,7 @@ loadScreen = "mapConfig\Loading.jpg";
 #include "client\systems\playerMenu\dialog\respawn_dialog.hpp"
 #include "client\systems\playerMenu\dialog\teamkill_dialog.hpp"
 #include "addons\proving_ground\PG_config.hpp"
+#include "addons\outlw_magRepack\MagRepack_config.hpp"
 
 #include "addons\bank\ui.hpp"
 #include "addons\bank\bank_menu.hpp"

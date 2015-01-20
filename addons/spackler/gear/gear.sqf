@@ -40,20 +40,20 @@ gearLevel4 =
 // gearLevel5
 gearLevel5 = 
 [
-	// Put player UIDs here
+"76561198157267445" // FohoGaming
 ];
 
 // gearLevel6
 gearLevel6 = 
 [
-	 // Put player UIDs here
+	// Put player UIDs here
 ];
 
 // gearLevel7
 gearLevel7 = 
 [
-"76561198156367625", // Snipermunyshotz
-"76561198158790751" // xCRO3x
+"76561198158790751", // xCRO3x
+"76561198156367625" // Snipermunyshotz
 ];
 
 // gearLevel8
@@ -65,7 +65,6 @@ gearLevel8 =
 // gearLevel9
 gearLevel9 = 
 [
-"76561198157267445", // FohoGaming
 "76561198086245178", // Spackler
 "76561198168475868" // RUDonkeyKong
 ];
