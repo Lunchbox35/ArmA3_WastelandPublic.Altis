@@ -33,8 +33,7 @@ else
 		{
 			if (isNull (_objet getVariable "R3F_LOG_est_transporte_par")) then
 			{
-//				if (count crew _objet == 0) then // Disabled and replaced with code below for being able to lift UGV and UAV.
-				if ({isPlayer _x} count crew _objet == 0 && {not(isPlayer((uavControl _objet ) select 0))}) then // New code to be able to lift UGV and UAV
+				if (count crew _objet == 0) then
 				{
 					// Si l'objet n'est pas en train d'être déplacé par un joueur
 					if (isNull (_objet getVariable "R3F_LOG_est_deplace_par") || (!alive (_objet getVariable "R3F_LOG_est_deplace_par"))) then

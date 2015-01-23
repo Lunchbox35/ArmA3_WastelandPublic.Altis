@@ -130,6 +130,8 @@ _onCaptureFinished =
 {
 	private ["_oldTeam", "_captureTeam", "_captureValue", "_captureName", "_captureDescription", "_descriptiveTeamName", "_otherTeams", "_captureColor", "_groupCaptures", "_msgWinners", "_msgOthers"];
 
+	//diag_log format["_onCapture called with %1", _this];
+
 	_oldTeam = _this select 0;
 	_captureTeam = _this select 1;
 	_captureValue = _this select 2;

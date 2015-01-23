@@ -11,8 +11,6 @@ _player addRating 9999999;
 
 [objNull, _player] call mf_player_actions_refresh;
 [] execVM "client\functions\playerActions.sqf";
-[] execVM "addons\EtV\init.sqf";						// Explosives to vehicles
-[] execVM "addons\bases\init.sqf";						// NLU Base script
 
 _player groupChat "Wasteland - Initialization Complete";
 playerSetupComplete = true;

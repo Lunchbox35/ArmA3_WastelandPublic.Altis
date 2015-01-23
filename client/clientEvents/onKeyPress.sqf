@@ -47,8 +47,7 @@ switch (true) do
 			{
 				if ((getPos player) select 2 > 2.5) then
 				{
-					openParachuteTimestamp = diag_tickTime;
-					execVM "client\actions\openParachute.sqf";
+					true call fn_openParachute;
 					_handled = true;
 				};
 			}
@@ -86,17 +85,19 @@ switch (true) do
 			_handled = true;
 		};
 	};
-	
-	// Ear Plugs - End Key
+
+	// Earplugs - End Key
 	case (_key == 207):
 	{
-		if (soundVolume <= 0.5) then
+		if (soundVolume > 0.5) then
+		{
+			0.5 fadeSound 0.2;
+			["You've inserted your earplugs.", 5] call mf_notify_client;
+		}
+		else
 		{
 			0.5 fadeSound 1;
-			["You've taken out your ear plugs.",4] call mf_notify_client;
-		} else {
-			0.5 fadeSound 0.1;
-			["You've inserted your ear plugs.",4] call mf_notify_client;
+			["You've taken out your earplugs.", 5] call mf_notify_client;
 		};
 	};
 };

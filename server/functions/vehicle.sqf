@@ -180,12 +180,6 @@ while {_run} do
 			};
 		};
 
-		// Check if owned vehicle. Added for not despawning town vehicles.
-		if (not(isNil {_veh getVariable "ownedVehicle"})) then 
-		{
-			_dead = false;
-		};
-		
 		// Respawn vehicle
 		if (_dead) then
 		{

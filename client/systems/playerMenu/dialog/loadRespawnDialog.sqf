@@ -15,7 +15,7 @@
 #define BEACON_CHECK_RADIUS 250
 
 disableSerialization;
-waitUntil {!isNil "bis_fnc_init"};
+waitUntil {!isNil "bis_fnc_init" && {bis_fnc_init}};
 
 createDialog "RespawnSelectionDialog";
 _display = uiNamespace getVariable ["RespawnSelectionDialog", displayNull];
@@ -44,7 +44,7 @@ _side = switch (playerSide) do
 	default      { "Independent" };
 };
 
-_respawnText ctrlSetStructuredText parseText (format ["Welcome to TC A3Wasteland Altis<br/>You are on %1. Please select a spawn point.", _side]);
+_respawnText ctrlSetStructuredText parseText (format ["Welcome to Wasteland<br/>You are on %1. Please select a spawn point.", _side]);
 respawnDialogActive = true;
 
 //buttonSetAction [respawn_Random_Button, format ["%1 [%2,0] execVM 'client\functions\spawnAction.sqf'", _disableAllButtons, respawn_Random_Button]];
@@ -335,9 +335,9 @@ _locMap ctrlAddEventHandler ["Draw",
 {
 	_ctrl = _this select 0;
 
-	if (!isNil "drawPlayerMarkers_array") then
+	if (!isNil "A3W_mapDraw_eventCode") then
 	{
-		{ _ctrl drawIcon _x } forEach drawPlayerMarkers_array;
+		_this call A3W_mapDraw_eventCode;
 	};
 
 	_spawnLoc = uiNamespace getVariable "RespawnSelectionDialog_selLocPos";

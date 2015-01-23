@@ -35,8 +35,8 @@ spawnActionHandle = (_this select 1) spawn
 		[] execVM "addons\spackler\gear\gearCheck.sqf"; //Spackler, Add extra gear.
 		//END
 
-		[MF_ITEMS_CANNED_FOOD, 2] call mf_inventory_add;
-		[MF_ITEMS_WATER, 2] call mf_inventory_add;
+		[MF_ITEMS_CANNED_FOOD, 1] call mf_inventory_add;
+		[MF_ITEMS_WATER, 1] call mf_inventory_add;
 		[MF_ITEMS_REPAIR_KIT, 1] call mf_inventory_add;
 	};
 
@@ -55,10 +55,6 @@ spawnActionHandle = (_this select 1) spawn
 		case 2: { _data call spawnOnBeacon };
 		default { _data call spawnRandom };
 	};
-
-	player enableSimulation true;
-	player allowDamage true;
-	player setVelocity [0,0,0];
 
 	if (isNil "client_firstSpawn") then
 	{

@@ -47,7 +47,7 @@ storePurchaseHandle = _this spawn
 	_colorlist = _dialog displayCtrl vehshop_color_list;
 	_colorIndex = lbCurSel vehshop_color_list;
 	_colorText = _colorlist lbText _colorIndex;
-	_colorData = _colorlist lbData _colorIndex;
+	_colorData = call compile (_colorlist lbData _colorIndex);
 
 	_showInsufficientFundsError =
 	{
@@ -79,9 +79,8 @@ storePurchaseHandle = _this spawn
 		_colorText = _this select 1;
 		_colorData = _this select 2;
 		_texArray  = [];
-		_vehicle setVariable ["vehOwnerName", name player, true];	// Used for locking and defining vehicle owner.
 
-		if (_colorData != "") then
+		if (count _colorData > 0) then
 		{
 			[_vehicle, _colorData] call applyVehicleTexture;
 		};
@@ -134,7 +133,7 @@ storePurchaseHandle = _this spawn
 
 			if (!isNil "_vehicle" && {!isNull _vehicle}) then
 			{
-				[_vehicle, _colorText, _colorData] call _applyVehProperties;
+				[_vehicle, _colorText, if (!isNil "_colorData") then { _colorData } else { "" }] call _applyVehProperties;
 			};
 		};
 	} forEach (call allVehStoreVehicles);
