@@ -21,7 +21,7 @@ if (!isServer) exitWith {};
 			diag_log format ["Creating territory capture trigger for '%1'", _marker];
 			_trig = createTrigger ["EmptyDetector", markerPos _marker];
 			_trig setVariable ["captureTriggerMarker", _marker, true];
-			
+	
             //Set default guards
       _pos = markerPos _marker;
       _numSide = 0;

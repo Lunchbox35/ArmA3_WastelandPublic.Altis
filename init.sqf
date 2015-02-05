@@ -36,17 +36,28 @@ if (!isDedicated) then
 {
 	[] spawn
 	{
-		9999 cutText ["Welcome to TC A3Wasteland Altis, please wait for your client to initialize", "BLACK", 0.01];
+		if (hasInterface) then // Normal player
+		{
+			9999 cutText ["Welcome to A3Wasteland, please wait for your client to initialize", "BLACK", 0.01];
 
-		waitUntil {!isNull player};
-		removeAllWeapons player;
-		client_initEH = player addEventHandler ["Respawn", { removeAllWeapons (_this select 0) }];
+			waitUntil {!isNull player};
+			removeAllWeapons player;
+			client_initEH = player addEventHandler ["Respawn", { removeAllWeapons (_this select 0) }];
 
-		// Reset group & side
-		[player] joinSilent createGroup playerSide;
-		player setVariable ["playerSpawning", true, true];
+			// Reset group & side
+			[player] joinSilent createGroup playerSide;
+			player setVariable ["playerSpawning", true, true];
 
-		[] execVM "client\init.sqf";
+			execVM "client\init.sqf";
+		}
+		else // Headless
+		{
+			waitUntil {!isNull player};
+			if (typeOf player == "HeadlessClient_F") then
+			{
+				execVM "client\headless\init.sqf";
+			};
+		};
 	};
 };
 
@@ -58,17 +69,15 @@ if (isServer) then
 };
 
 //init 3rd Party Scripts
+[] execVM "addons\vactions\functions.sqf";
+[] execVM "addons\parking\functions.sqf";
+[] execVM "addons\storage\functions.sqf";
 [] execVM "addons\R3F_ARTY_AND_LOG\init.sqf";
 [] execVM "addons\proving_ground\init.sqf";
 [] execVM "addons\scripts\DynamicWeatherEffects.sqf";
 [] execVM "addons\JumpMF\init.sqf";
-[] execVM "addons\laptop\init.sqf";						// Addon for hack laptop mission
 
+//Spckler, Init 3rd party Scripts
 [] execVM "addons\scripts\intro.sqf";					// Show intro text
-
-//Spackler, Init 3rd party Scripts which is not in vanilla.
 [] execVM "addons\spackler\gear\default_gear.sqf";												//add extra gear if UID in certain files
-[] execVM "addons\EtV\init.sqf";															//add functions to attach explosives to vehicle
-[] execVM "addons\zlt_fastrope\zlt_fastrope.sqf";											// fast roping
 [] execVM "addons\outlw_magRepack\MagRepack_init_sv.sqf";									//add repacking of magazines
-//END

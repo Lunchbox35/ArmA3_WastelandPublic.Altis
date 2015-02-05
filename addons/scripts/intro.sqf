@@ -7,7 +7,7 @@ _onScreenTime = 15;
 
 sleep 60;
 
-_role1 = "Welcome to Turtle Club's A3Wasteland Altis";
+_role1 = "Welcome to TC A3Wasteland Altis";
 _role1names = ["Have fun and be sure to favorite the server!"];
 _role2 = "** Suggested MODS **";
 _role2names = ["VTS Weapon Resting, JSRS2.2, Blastcore-A3, CBA_A3"];
@@ -21,6 +21,8 @@ _role6 = "ATM / Bank";
 _role6names = ["ATM's no longer show on the map. You can now use ANY atm found in Altis."];
 _role7 = "**NEW** Capture Point Patrols";
 _role7names = ["Capture points are now patrolled by enemy AI. Once captured Blufor/Opfor support AI will be called in to help defend the capture point from invading forces. Independent gets no support."];
+_role8 = "**NEW** Lockable Buildings";
+_role8names = ["Lockable(Not Cheap) buildings can now be purchased at a General Store. Make sure you have transportation big enough to move the building to your location of choice."];
 
 {
 sleep 2;
@@ -47,5 +49,6 @@ sleep (_onScreenTime);
 [_role4, _role4names],
 [_role5, _role5names],
 [_role6, _role6names],
-[_role7, _role7names]
+[_role7, _role7names],
+[_role8, _role8names]
 ];

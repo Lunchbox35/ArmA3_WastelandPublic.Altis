@@ -31,7 +31,7 @@ spawnActionHandle = (_this select 1) spawn
 		// Deal with money here
 		_baseMoney = ["A3W_startingMoney", 100] call getPublicVar;
 		player setVariable ["cmoney", _baseMoney, true];
-		
+
 		[] execVM "addons\spackler\gear\gearCheck.sqf"; //Spackler, Add extra gear.
 		//END
 

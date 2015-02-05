@@ -14,8 +14,10 @@ _obj addEventHandler ["Killed",
 	_obj = _this select 0;
 	_obj setVariable ["processedDeath", diag_tickTime];
 
+  /* Not needed for sock-rpc-stats ... since object is not the map, it would not be saved
 	if (!isNil "fn_manualObjectDelete") then
 	{
 		[objNull, _obj getVariable "A3W_objectID"] call fn_manualObjectDelete;
 	};
+	*/
 }];

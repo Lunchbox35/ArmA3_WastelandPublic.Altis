@@ -88,15 +88,37 @@ player addEventHandler ["InventoryClosed",
 	_obj setVariable ["inventoryIsOpen", nil];
 }];
 
+
+//handler for UAV assembly
+player addEventHandler ["WeaponAssembled", {
+  private["_player", "_vehicle"];
+  _player = _this select 0;
+  _vehicle = _this select 1;
+
+  if (_player != player) exitWith {};
+  if (!(_vehicle isKindOf "UAV_01_base_F")) exitWith {};
+
+  private["_uid"];
+  _uid = getPlayerUID _player;
+  if (_uid == "") exitWith {};
+
+  _vehicle setVariable ["ownerUID", _uid, true];
+  _vehicle setVariable ["A3W_purchasedVehicle", true, true];
+	_vehicle setVariable ["ownerN", name _player, true];
+  trackVehicle = _vehicle;
+  publicVariableServer "trackVehicle";
+}];
+
+
+// Manual GetIn/GetOut check because BIS is too lazy to implement GetInMan/GetOutMan, among a LOT of other things
 [] spawn
 {
 	_lastVeh = vehicle player;
 
-	waitUntil
+	while {true} do
 	{
 		_currVeh = vehicle player;
 
-		// Manual GetIn/GetOut check because BIS is too lazy to implement GetInMan/GetOutMan
 		if (_lastVeh != _currVeh) then
 		{
 			if (_currVeh != player) then
@@ -110,14 +132,7 @@ player addEventHandler ["InventoryClosed",
 		};
 
 		_lastVeh = _currVeh;
-
-		// Prevent usage of commander camera
-		if (cameraView == "GROUP") then
-		{
-			cameraOn switchCamera "EXTERNAL";
-		};
-
-		false
+		uiSleep 0.25;
 	};
 };
 
@@ -132,7 +147,7 @@ if (["A3W_combatAbortDelay", 0] call getPublicVar > 0) then
 		{
 			_ammo = _this select 4;
 
-			if ({_ammo isKindOf _x} count ["PipeBombBase", "ClaymoreDirectionalMine_Remote_Ammo"] > 0) then
+			if ({_ammo isKindOf _x} count ["PipeBombBase", "ClaymoreDirectionalMine_Remote_Ammo", "APERSTripMine_Wire_Ammo", "APERSBoundingMine_Range_Ammo", "APERSMine_Range_Ammo", "SLAMDirectionalMine_Wire_Ammo", "ATMine_Range_Ammo"] > 0) then
 			{
 				_mag = _this select 5;
 				_bomb = _this select 6;
@@ -144,7 +159,7 @@ if (["A3W_combatAbortDelay", 0] call getPublicVar > 0) then
 						deleteVehicle _bomb;
 						player addMagazine _mag;
 						playSound "FD_CP_Not_Clear_F";
-						titleText [format ["You are not allowed to place remote explosives within %1m of a store.\nThe explosive has been re-added to your inventory.", _minDist], "PLAIN DOWN", 0.5];
+						titleText [format ["You are not allowed to place explosives within %1m of a store.\nThe explosive has been re-added to your inventory.", _minDist], "PLAIN DOWN", 0.5];
 					};
 				} forEach entities "CAManBase";
 			};

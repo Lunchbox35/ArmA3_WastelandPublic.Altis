@@ -209,3 +209,12 @@ vehicleAddition2 =
 	"Chemlight_yellow",
 	"Chemlight_red"
 ];
+
+minesList = 
+[
+    "APERSTripMine_Wire_Ammo",
+    "APERSBoundingMine_Range_Ammo",
+    "APERSMine_Range_Ammo",
+    "ATMine_Range_Ammo",
+    "SLAMDirectionalMine_Wire_Ammo"
+]

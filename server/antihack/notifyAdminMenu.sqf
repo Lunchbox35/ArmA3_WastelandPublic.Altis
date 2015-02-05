@@ -13,7 +13,7 @@ if !([getPlayerUID player, 3] call isAdmin) exitWith {};
 private ["_action", "_value", "_cfg", "_displayStr", "_message"];
 
 _action = [_this, 0, "", [""]] call BIS_fnc_param;
-_value = [_this, 1, "", [0,"",[]]] call BIS_fnc_param;
+_value = [_this, 1, "", [0,"",[],true]] call BIS_fnc_param;
 
 switch (toLower _action) do
 {
@@ -22,6 +22,22 @@ switch (toLower _action) do
 		if (_value > 0) then
 		{
 			_message = format ["[NOTICE] %1 used the admin menu to obtain $%2", name player, _value];
+		};
+	};
+	case "markers":
+		{
+		if (_value) then {
+			_message = format ["[NOTICE] %1 ENABLED player markers", name player];
+		}else{
+			_message = format ["[NOTICE] %1 DISABLED player markers", name player];
+		};
+	};
+	case "godmode":
+		{
+		if (_value) then {
+		_message = format ["[NOTICE] %1 ENABLED GodMode", name player];
+		}else{
+			_message = format ["[NOTICE] %1 DISABLED GodMode", name player];
 		};
 	};
 	case "teleport":
@@ -54,6 +70,7 @@ if (!isNil "_cfg" && {isClass _cfg}) then
 if (!isNil "_message" && {_message != ""}) then
 {
 	[[_message, getPlayerUID player, _flagChecksum, true], "A3W_fnc_chatBroadcast", true] call A3W_fnc_MP;
+	systemChat format ["Now everyone knows about: %1. What a shame.",_message];
 };
 
 [[profileName, getPlayerUID player, _action, _value, _flagChecksum], "A3W_fnc_adminMenuLog", false] call A3W_fnc_MP;

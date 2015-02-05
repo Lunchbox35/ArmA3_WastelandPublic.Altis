@@ -22,7 +22,6 @@ if ([_uid, 3] call isAdmin) then {
 					"Vehicle Management",
 					"Player Markers",
 					"Teleport",
-					"Teleport player to me",
 	                "Money",
 	                "Debug Menu",
 					"Object Search",

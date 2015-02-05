@@ -13,7 +13,6 @@
 #define hud_vehicle_idc 3601
 #define hud_activity_icon_idc 3602
 #define hud_activity_textbox_idc 3603
-#define hud_server_idc 3604
 
 class WastelandHud {
 	idd = -1;
@@ -30,8 +29,8 @@ class WastelandHud {
 			type = CT_STRUCTURED_TEXT;
 			size = 0.040;
 			x = safeZoneX + (safeZoneW * (1 - (0.42 / SafeZoneW)));
-			y = safeZoneY + (safeZoneH * (1 - (0.37 / SafeZoneH)));
-			w = 0.4; h = 0.69;
+			y = safeZoneY + (safeZoneH * (1 - (0.33 / SafeZoneH)));
+			w = 0.4; h = 0.65;
 			colorText[] = {1,1,1,1};
 			lineSpacing = 3;
 			colorBackground[] = {0,0,0,0};
@@ -47,8 +46,8 @@ class WastelandHud {
 			type = CT_STRUCTURED_TEXT;
 			size = 0.040;
 			x = safeZoneX + (safeZoneW * (1 - (0.24 / SafeZoneW)));
-			y = safeZoneY + (safeZoneH * (1 - (0.26 / SafeZoneH)));
-			w = 0.22; h = 0.26;
+			y = safeZoneY + (safeZoneH * (1 - (0.28 / SafeZoneH)));
+			w = 0.22; h = 0.28;
 			colorText[] = {1,1,1,1};
 			lineSpacing = 3;
 			colorBackground[] = {0,0,0,0};
@@ -94,23 +93,6 @@ class WastelandHud {
 			class Attributes {
 				align = "left";
 				valign = "middle";
-			};
-		};
-		class WastelandHud_Server:w_RscText
-		{
-			idc = hud_server_idc;
-			type = CT_STRUCTURED_TEXT;
-			size = 0.040;
-			x = safeZoneX + (safeZoneW * (1 - (0.90 / SafeZoneW)));
-			y = safeZoneY + (safeZoneH * (1 - (0.15 / SafeZoneH)));
-			w = 0.40; h = 0.15;
-			colorText[] = {1,1,1,1};
-			lineSpacing = 3;
-			colorBackground[] = {0,0,0,0};
-			text = "";
-			shadow = 2;
-			class Attributes {
-				align = "right";
 			};
 		};
 	};

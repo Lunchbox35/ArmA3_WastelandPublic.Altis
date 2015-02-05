@@ -49,10 +49,4 @@ if (isPlayer _player) then
 
 	// sync Steam scoreboard
 	_player addScore ((([_player, "playerKills"] call fn_getScore) - ([_player, "teamKills"] call fn_getScore)) - score _player);
-
-	if (!isNil "_column" && !isNil "_score" && !isNil "fn_updateStats") then
-	{
-		// Log Scores to DB
-		[getPlayerUID _player, _column, _score] call fn_updateStats;
-	};
 };

@@ -90,6 +90,24 @@
 		<Key ID="STR_WL_ShopDescriptions_Warchest">
 			<English>A safe to store your team's money.</English>
 		</Key>
+		<Key ID="STR_WL_ShopDescriptions_CCTV_Camera">
+			<English>This is a remote networked camera that transmits a video signal via Internet Protocol (IP).</English>
+		</Key>
+		<Key ID="STR_WL_ShopDescriptions_CCTV_Base">
+			<English>This is a computer terminal that receives video signals from one or more remote networked cameras via Internet Protocol (IP).</English>
+		</Key>
+		<Key ID="STR_WL_ShopDescriptions_Boomerang_Terminal">
+			<English>
+				This is a portable terminal for the Boomerang shot detection system.
+				This terminal connects to any Boomerang base station installed in nearby vehicles.
+			</English>
+		</Key>
+		<Key ID="STR_WL_ShopDescriptions_Boomerang_Station">
+			<English>
+				This is the base station for the Boomerang shot detection system. You can install it in vehicles by clicking ""Use"" while inside the vehicle.
+				All players inside the vehicle can use the Boomerang system without a portable terminal.
+			</English>
+		</Key>
 	</Package>
 	<Package name="Dialogs">
 		<Key ID="STR_WL_dialog_TeamkillText">

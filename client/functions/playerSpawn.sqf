@@ -24,6 +24,7 @@ if (!isNil "pvar_teamKillList" && {playerSide in [BLUFOR,OPFOR]}) then
 		_time = diag_tickTime;
 
 		waitUntil {scriptDone _msgBox || diag_tickTime - _time >= 20};
+		player setVariable ["initComplete", false, true];
 		endMission "LOSER";
 		waitUntil {uiNamespace setVariable ["BIS_fnc_guiMessage_status", false]; closeDialog 0; false};
 	};
@@ -52,6 +53,7 @@ if (!isNil "pvar_teamSwitchList" && playerSide in [BLUFOR,OPFOR]) then
 		_time = diag_tickTime;
 
 		waitUntil {scriptDone _msgBox || diag_tickTime - _time >= 20};
+		player setVariable ["initComplete", false, true];
 		endMission "LOSER";
 		waitUntil {uiNamespace setVariable ["BIS_fnc_guiMessage_status", false]; closeDialog 0; false};
 	};

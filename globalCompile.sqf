@@ -73,8 +73,7 @@ _serverFunc = "server\functions";
 A3W_fnc_pushVehicle = [_serverFunc, "pushVehicle.sqf"] call mf_compile;
 A3W_fnc_setName = [_clientFunc, "fn_setName.sqf"] call mf_compile;
 A3W_fnc_towingHelper = [_serverFunc, "towingHelper.sqf"] call mf_compile;
-A3W_fnc_setLockState = { (objectFromNetId (_this select 0)) lock (_this select 1) } call mf_compile; // Added for locking unlocking
-A3W_fnc_hideObjectGlobal = { (objectFromNetId (_this select 0)) hideObjectGlobal (_this select 1) } call mf_compile; // Added for admin base
+A3W_fnc_reboot = {"Reboot" call BIS_fnc_endMission} call mf_compile;
 allPlayers = [_serverFunc, "allPlayers.sqf"] call mf_compile;
 applyVehicleTexture = "client\systems\vehicleStore\applyVehicleTexture.sqf" call mf_compile;
 cargoToPairs = [_serverFunc, "cargoToPairs.sqf"] call mf_compile;
@@ -92,6 +91,7 @@ fn_forceAddItem = [_clientFunc, "fn_forceAddItem.sqf"] call mf_compile;
 fn_getFromPairs = [_serverFunc, "fn_getFromPairs.sqf"] call mf_compile;
 fn_getPos3D = [_serverFunc, "fn_getPos3D.sqf"] call mf_compile;
 fn_getScore = [_serverFunc, "fn_getScore.sqf"] call mf_compile;
+fn_setScore = [_serverFunc, "fn_setScore.sqf"] call mf_compile;
 fn_getTeamScore = [_serverFunc, "fn_getTeamScore.sqf"] call mf_compile;
 fn_hideObjectGlobal = [_serverFunc, "fn_hideObjectGlobal.sqf"] call mf_compile;
 fn_loopSpread = [_serverFunc, "fn_loopSpread.sqf"] call mf_compile;
@@ -109,7 +109,6 @@ getFwdVelocity = [_serverFunc, "getFwdVelocity.sqf"] call mf_compile;
 getHitPoints = [_serverFunc, "getHitPoints.sqf"] call mf_compile;
 getMagAmmoCount = [_serverFunc, "getMagAmmoCount.sqf"] call mf_compile;
 getMoveWeapon = [_clientFunc, "getMoveWeapon.sqf"] call mf_compile;
-fn_getPlayerData = "persistence\client\players\getPlayerData.sqf" call mf_compile;
 getPublicVar = [_serverFunc, "getPublicVar.sqf"] call mf_compile;
 getTeamMarkerColor = "territory\client\getTeamMarkerColor.sqf" call mf_compile;
 isConfigOn = [_serverFunc, "isConfigOn.sqf"] call mf_compile;
@@ -122,6 +121,15 @@ vehicleDammagedEvent = [_serverFunc, "vehicleDammagedEvent.sqf"] call mf_compile
 vehicleEngineEvent = [_serverFunc, "vehicleEngineEvent.sqf"] call mf_compile;
 vehicleHandleDamage = [_serverFunc, "vehicleHandleDamage.sqf"] call mf_compile;
 vehicleHitTracking = [_serverFunc, "vehicleHitTracking.sqf"] call mf_compile;
+A3W_fnc_setVectorUpAndDir = {
+  private["_left", "_right"];
+  _left = _this select 0;
+  _right = _this select 1;
+  if (isNil "_left" || {typeName _left != typeName objNull || {isNull _left}}) exitWith {};
+  if (isNil "_right" || {typeName _right != typeName []}) exitWith {};
+
+  _left setVectorDirAndUp _right;
+} call mf_compile;
 
 call compile preprocessFileLineNumbers "server\functions\mf_remote.sqf";
 

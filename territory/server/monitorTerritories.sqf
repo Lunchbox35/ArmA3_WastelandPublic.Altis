@@ -177,8 +177,8 @@ _onCaptureFinished =
 
 	_msgOthers = format ["%1 has captured %2", _descriptiveTeamName, _captureDescription];
 	["pvar_territoryActivityHandler", [_otherTeams, [_msgOthers]]] call fn_publicVariableAll;
-	
-//Militarize this territory
+
+	//Militarize this territory
 
 	private ["_terrEnabled","_useParadrop","_numSide","_pos","_radius","_spawnInfantry","_spawnVehicles","_stayStill","_infantryAlways","_infantryRandom","_vehiclesAlways","_vehiclesRandom","_aiSkills","_groupID","_customInit","_territoryID"];
 

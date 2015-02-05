@@ -3,7 +3,7 @@
 // ******************************************************************************************
 //	@file Version: 1.1
 //	@file Name: init.sqf
-//	@file Author: [404] Deadbeat, [GoT] JoSchaap, AgentRev
+//	@file Author: [404] Deadbeat, [GoT] JoSchaap, AgentRev, micovery
 //	@file Created: 20/11/2012 05:19
 //	@file Description: The server init.
 //	@file Args:
@@ -15,26 +15,28 @@ externalConfigFolder = "\A3Wasteland_settings";
 vChecksum = compileFinal str call A3W_fnc_generateKey;
 
 // Corpse deletion on disconnect if player alive and player saving on + inventory save
-addMissionEventHandler ["HandleDisconnect",
+addMissionEventHandler ["HandleDisconnect", 
 {
 	_unit = _this select 0;
 	_id = _this select 1;
 	_uid = _this select 2;
 	_name = _this select 3;
 
+  /*
 	if (alive _unit && (_unit getVariable ["FAR_isUnconscious", 0] == 0) && {!isNil "isConfigOn" && {["A3W_playerSaving"] call isConfigOn}}) then
 	{
 		if (!(_unit getVariable ["playerSpawning", false]) && typeOf _unit != "HeadlessClient_F") then
 		{
-			[_uid, [], [_unit, false] call fn_getPlayerData] spawn fn_saveAccount;
+			[_uid, [["BankMoney", _unit getVariable ["bmoney", 0]]], [_unit, false] call fn_getPlayerData] spawn fn_saveAccount;
 		};
 
 		deleteVehicle _unit;
 	};
+  */
 
 	if (!isNil "fn_onPlayerDisconnected") then
 	{
-		[_id, _uid, _name] spawn fn_onPlayerDisconnected;
+		[_id, _uid, _name, _unit] call fn_onPlayerDisconnected;
 	};
 
 	false
@@ -128,11 +130,24 @@ _setupPlayerDB = scriptNull;
 // Do we need any persistence?
 if (_playerSavingOn || _serverSavingOn) then
 {
-	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 	
+ 	_savingMethod = ["A3W_savingMethod", "profile"] call getPublicVar;
+ 	if (_savingMethod == "iniDBI") then { _savingMethod = "iniDB" };
 
-	_savingMethod = ["A3W_savingMethod", "profile"] call getPublicVar;
-	if (_savingMethod == "iniDBI") then { _savingMethod = "iniDB" };
-
+  _savingMethod = "sock";
+  
+  if (_savingMethod == "sock") then {
+    A3W_savingMethod = compileFinal "sock";
+    A3W_savingMethodName = compileFinal "'sock'";
+  
+    diag_log format ["[INFO] ### A3W running with %1", call A3W_savingMethodName];
+  
+    call compile preProcessFileLineNumbers "persistence\fn_sock_custom.sqf";
+  
+    diag_log format ["[INFO] ### Saving method = %1", call A3W_savingMethodName];
+  };
+  
 	// extDB
 	if (_savingMethod == "extDB") then
 	{
@@ -194,11 +209,11 @@ if (_playerSavingOn || _serverSavingOn) then
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	call compile preProcessFileLineNumbers format ["persistence\server\setup\%1\init.sqf", call A3W_savingMethodDir];
+	//call compile preProcessFileLineNumbers format ["persistence\server\setup\%1\init.sqf", call A3W_savingMethodDir];
 
 	if (_playerSavingOn) then
 	{
-		_setupPlayerDB = [] spawn compile preprocessFileLineNumbers "persistence\server\players\setupPlayerDB.sqf"; // scriptDone stays stuck on false on Linux servers when using execVM
+		_setupPlayerDB = [] spawn compile preprocessFileLineNumbers "persistence\players\s_setupPlayerDB.sqf"; // scriptDone stays stuck on false on Linux servers when using execVM
 
 		// profileNamespace doesn't save antihack logs
 		if (_savingMethod != "profile") then
@@ -212,7 +227,6 @@ if (_playerSavingOn || _serverSavingOn) then
 				{ [getPlayerUID _x, name _x] call fn_kickPlayerIfFlagged } forEach (call allPlayers);
 			};
 		};
->>>>>>> vanilla/Development_main
 	};
 
 	[_playerSavingOn, _serverSavingOn, _vehicleSavingOn] spawn
@@ -221,39 +235,26 @@ if (_playerSavingOn || _serverSavingOn) then
 		_serverSavingOn = _this select 1;
 		_vehicleSavingOn = _this select 2;
 
-<<<<<<< HEAD
-		if (_serverSavingOn) then
-		{
-			call compile preprocessFileLineNumbers "persistence\world\oLoad.sqf";
-=======
 		_objectIDs = [];
 		_vehicleIDs = [];
 
 		if (_serverSavingOn) then
 		{
-			_objectIDs = call compile preprocessFileLineNumbers "persistence\server\world\oLoad.sqf";
->>>>>>> vanilla/Development_main
+			_objectIDs = call compile preprocessFileLineNumbers "persistence\world\oLoad.sqf";
 		};
 
 		if (_vehicleSavingOn) then
 		{
-<<<<<<< HEAD
-			call compile preprocessFileLineNumbers "persistence\world\vLoad.sqf";
+			_vehicleIDs = call compile preprocessFileLineNumbers "persistence\world\vLoad.sqf";
 		};
 
-		if (_serverSavingOn || (_playerSavingOn && ["A3W_savingMethod", 1] call getPublicVar == 1)) then
-		{
-			execVM "persistence\world\oSave.sqf";
-=======
-			_vehicleIDs = call compile preprocessFileLineNumbers "persistence\server\world\vLoad.sqf";
-		};
-
+		/*
 		if (_serverSavingOn || {_playerSavingOn && call A3W_savingMethod == "profile"}) then
 		{
 			[_objectIDs, _vehicleIDs] execVM "persistence\server\world\oSave.sqf";
 			waitUntil {!isNil "A3W_oSaveReady"};
->>>>>>> vanilla/Development_main
 		};
+		*/
 	};
 
 	{
@@ -263,10 +264,7 @@ if (_playerSavingOn || _serverSavingOn) then
 	[
 		["playerSaving", _playerSavingOn],
 		["baseSaving", _baseSavingOn],
-<<<<<<< HEAD
-=======
 		["vehicleSaving", _vehicleSavingOn],
->>>>>>> vanilla/Development_main
 		["boxSaving", _boxSavingOn],
 		["staticWeaponSaving", _staticWeaponSavingOn],
 		["warchestSaving", _warchestSavingOn],
@@ -275,12 +273,6 @@ if (_playerSavingOn || _serverSavingOn) then
 	];
 };
 
-<<<<<<< HEAD
-call compile preprocessFileLineNumbers "server\missions\setupMissionArrays.sqf";
-call compile preprocessFileLineNumbers "server\functions\createTownMarkers.sqf";
-
-_createTriggers = [] spawn compile preprocessFileLineNumbers "territory\server\createCaptureTriggers.sqf"; // For some reason, scriptDone stays stuck on false on Linux servers when using execVM for this line...
-=======
 if (isNil "A3W_savingMethod") then
 {
 	A3W_savingMethod = compileFinal "'none'";
@@ -291,7 +283,6 @@ call compile preprocessFileLineNumbers "server\missions\setupMissionArrays.sqf";
 call compile preprocessFileLineNumbers "server\functions\createTownMarkers.sqf";
 
 _createTriggers = [] spawn compile preprocessFileLineNumbers "territory\server\createCaptureTriggers.sqf"; // scriptDone stays stuck on false when using execVM on Linux
->>>>>>> vanilla/Development_main
 
 [_setupPlayerDB, _createTriggers] spawn
 {
@@ -349,11 +340,6 @@ if (["A3W_serverSpawning"] call isConfigOn) then
 	{
 		call compile preprocessFileLineNumbers "server\functions\boxSpawning.sqf";
 	};
-<<<<<<< HEAD
-};
-
-["A3W_quit", "onPlayerDisconnected", { [_id, _uid, _name] spawn fn_onPlayerDisconnected }] call BIS_fnc_addStackedEventHandler;
-=======
 
 	if (["A3W_vehicleSpawning"] call isConfigOn || ["A3W_boatSpawning"] call isConfigOn) then
 	{
@@ -363,7 +349,6 @@ if (["A3W_serverSpawning"] call isConfigOn) then
 
 A3W_serverSpawningComplete = compileFinal "true";
 publicVariable "A3W_serverSpawningComplete";
->>>>>>> vanilla/Development_main
 
 if (count (["config_territory_markers", []] call getPublicVar) > 0) then
 {
@@ -396,3 +381,5 @@ if (["A3W_serverMissions"] call isConfigOn) then
 
 // Start clean-up loop
 [] execVM "server\WastelandServClean.sqf";
+
+
